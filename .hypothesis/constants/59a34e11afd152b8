@@ -1,0 +1,4 @@
+# file: C:\Users\jules\OneDrive\Documents\USU Hackathon\src\data_access.py
+# hypothesis_version: 6.151.9
+
+[';', 'active', 'actual_delivery', 'average_lead_time', 'capacity', 'category', 'contact', 'created_at', 'current_location', 'destination', 'edges.csv', 'estimated_delivery', 'id', 'inventory', 'inventory.csv', 'items', 'last_updated', 'latitude', 'location', 'longitude', 'name', 'nodes.csv', 'origin', 'performance_score', 'quality_score', 'quantity', 'r', 'reorder_point', 'shipment', 'shipment_ids', 'shipments.csv', 'source_node_id', 'status', 'supplier', 'supplier_id', 'suppliers.csv', 'target_node_id', 'total_shipments', 'true', 'type', 'unit', 'updated_at', 'utf-8', 'w']

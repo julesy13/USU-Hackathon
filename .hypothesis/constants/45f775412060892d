@@ -1,0 +1,4 @@
+# file: C:\Users\jules\OneDrive\Documents\USU Hackathon\src\models.py
+# hypothesis_version: 6.151.9
+
+[-180, 100, 180, 'congested', 'critical', 'delayed', 'delivered', 'destination', 'disrupted', 'high', 'in_transit', 'inventory', 'low', 'low_stock', 'medium', 'normal', 'pending', 'shipment', 'shipment_delay', 'supplier', 'supplier_performance', 'warehouse']
