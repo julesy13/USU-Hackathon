@@ -64,7 +64,7 @@ def refresh_data():
     """Refresh data from source"""
     try:
         data_service = st.session_state.data_service
-        data = data_service.refresh_data()
+        data = data_service.refresh_data("data")
         st.session_state.data_cache = data
         st.session_state.last_refresh = datetime.now()
         st.sidebar.success("✅ Data refreshed")

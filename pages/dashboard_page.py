@@ -75,7 +75,7 @@ def refresh_data():
     """Refresh data from source"""
     try:
         data_service = st.session_state.data_service
-        data = data_service.refresh_data()
+        data = data_service.refresh_data("data")
         st.session_state.data_cache = data
         st.session_state.last_refresh = datetime.now()
         st.success("✅ Data refreshed successfully")
@@ -87,7 +87,7 @@ def refresh_data():
 
 def render_metrics(data):
     """Render key metrics cards"""
-    dashboard = Dashboard()
+    dashboard = Dashboard(data)
     metrics = dashboard.get_metrics(data)
     
     col1, col2, col3, col4 = st.columns(4)

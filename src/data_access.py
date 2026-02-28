@@ -37,7 +37,7 @@ class DataAccessService:
         self._cache: Optional[SupplyChainData] = None
         self._cache_timestamp: Optional[datetime] = None
     
-    def load_data(self, source: str) -> SupplyChainData:
+    def load_data(self, source: str = "data") -> SupplyChainData:
         """
         Load data from configured source.
         
@@ -45,7 +45,8 @@ class DataAccessService:
         containing CSV files for each entity type (shipments.csv, inventory.csv, etc.).
         
         Args:
-            source: Path to data source (directory containing CSV files)
+            source: Path to data source (directory containing CSV files). Defaults to "data".
+                   Can be "csv" (alias for "data") or any directory path.
             
         Returns:
             SupplyChainData object containing all loaded data
@@ -54,6 +55,10 @@ class DataAccessService:
             FileNotFoundError: If source directory or required CSV files don't exist
             ValueError: If CSV data is invalid or malformed
         """
+        # Handle "csv" as an alias for "data" directory
+        if source == "csv":
+            source = "data"
+        
         source_path = Path(source)
         
         if not source_path.exists():
@@ -91,14 +96,14 @@ class DataAccessService:
         """
         return self._cache
     
-    def refresh_data(self, source: str) -> SupplyChainData:
+    def refresh_data(self, source: str = "data") -> SupplyChainData:
         """
         Refresh data from source.
         
         This method reloads data from the source and updates the cache.
         
         Args:
-            source: Path to data source
+            source: Path to data source. Defaults to "data".
             
         Returns:
             Refreshed SupplyChainData object
