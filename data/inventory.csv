@@ -1,0 +1,21 @@
+id,name,category,location,quantity,unit,reorder_point,last_updated
+INV001,Industrial Bearings,Mechanical Parts,Los Angeles Warehouse,1500,pieces,500,2024-02-01 08:00:00
+INV002,Steel Plates,Raw Materials,Los Angeles Warehouse,2500,kg,1000,2024-02-01 08:00:00
+INV003,Electronic Sensors,Electronics,Hamburg Warehouse,850,pieces,200,2024-01-31 14:30:00
+INV004,Hydraulic Pumps,Mechanical Parts,Hamburg Warehouse,320,pieces,100,2024-01-31 14:30:00
+INV005,Control Panels,Electronics,Hamburg Warehouse,180,pieces,50,2024-01-31 14:30:00
+INV006,Microprocessors,Electronics,Singapore Hub,2200,pieces,500,2024-01-28 16:00:00
+INV007,Aluminum Sheets,Raw Materials,Chicago Warehouse,450,kg,800,2024-01-30 10:00:00
+INV008,Copper Wire,Raw Materials,Chicago Warehouse,680,kg,300,2024-01-30 10:00:00
+INV009,Textile Fabric,Textiles,Dubai Warehouse,3500,meters,1000,2024-02-01 12:00:00
+INV010,Plastic Pellets,Raw Materials,Dubai Warehouse,5200,kg,2000,2024-02-01 12:00:00
+INV011,LED Displays,Electronics,Paris Distribution Center,420,pieces,150,2024-01-30 11:20:00
+INV012,Rubber Gaskets,Mechanical Parts,Sydney Warehouse,1800,pieces,600,2024-01-29 09:00:00
+INV013,Stainless Steel Bolts,Hardware,Sydney Warehouse,5500,pieces,2000,2024-01-29 09:00:00
+INV014,Ceramic Tiles,Construction,Rio de Janeiro Store,950,boxes,400,2024-01-28 15:00:00
+INV015,Lithium Batteries,Electronics,Busan Port,380,pieces,200,2024-01-25 16:45:00
+INV016,Solar Panels,Electronics,Busan Port,125,pieces,50,2024-01-25 16:45:00
+INV017,Wooden Pallets,Packaging,Vancouver Store,220,pieces,100,2024-01-27 11:00:00
+INV018,Cardboard Boxes,Packaging,Toronto Warehouse,3200,pieces,1500,2024-02-01 09:00:00
+INV019,Glass Bottles,Packaging,Berlin Distribution Center,4800,pieces,2000,2024-01-31 13:00:00
+INV020,Plastic Containers,Packaging,Shanghai Port,6500,pieces,3000,2024-02-01 07:00:00

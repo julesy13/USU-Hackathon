@@ -9,8 +9,10 @@ from datetime import datetime, timedelta
 from hypothesis import strategies as st
 from src.models import (
     Shipment, InventoryItem, Supplier, Node, Edge, Alert, StatusUpdate,
-    ShipmentStatus, NodeType, NodeStatus, AlertType, AlertSeverity
+    ShipmentStatus, NodeType, NodeStatus, AlertType, AlertSeverity,
+    SupplyChainData
 )
+from src.filter_engine import FilterCriteria
 
 
 # Basic strategies for common types
@@ -162,4 +164,118 @@ def status_update_strategy(draw):
         old_value=draw(st.one_of(st.text(), st.integers(), st.floats(allow_nan=False, allow_infinity=False))),
         new_value=draw(st.one_of(st.text(), st.integers(), st.floats(allow_nan=False, allow_infinity=False))),
         timestamp=draw(datetime_strategy())
+    )
+
+
+# SupplyChainData strategy
+@st.composite
+def supply_chain_data_strategy(draw, min_items=0, max_items=20):
+    """
+    Generate valid SupplyChainData instances with referential integrity.
+    
+    This strategy ensures that:
+    - Shipments reference valid supplier IDs
+    - Edges only connect nodes that exist in the node set
+    - All entities have consistent relationships
+    """
+    # Generate suppliers first so shipments can reference them
+    suppliers = draw(st.lists(supplier_strategy(), min_size=min_items, max_size=max_items))
+    supplier_ids = [s.id for s in suppliers] if suppliers else ['default_supplier']
+    
+    # Generate nodes
+    nodes = draw(st.lists(node_strategy(), min_size=min_items, max_size=max_items))
+    node_ids = [n.id for n in nodes]
+    
+    # Generate shipments that reference valid suppliers
+    @st.composite
+    def shipment_with_valid_supplier(draw):
+        shipment = draw(shipment_strategy())
+        # Override supplier_id to reference a valid supplier
+        shipment.supplier_id = draw(st.sampled_from(supplier_ids))
+        return shipment
+    
+    shipments = draw(st.lists(shipment_with_valid_supplier(), min_size=min_items, max_size=max_items))
+    
+    # Generate inventory items
+    inventory = draw(st.lists(inventory_item_strategy(), min_size=min_items, max_size=max_items))
+    
+    # Generate edges that only connect existing nodes
+    edges = []
+    if len(node_ids) >= 2:
+        @st.composite
+        def edge_with_valid_nodes(draw):
+            edge = draw(edge_strategy())
+            # Override source and target to reference valid nodes
+            edge.source_node_id = draw(st.sampled_from(node_ids))
+            edge.target_node_id = draw(st.sampled_from(node_ids))
+            # Ensure source and target are different
+            while edge.source_node_id == edge.target_node_id and len(node_ids) > 1:
+                edge.target_node_id = draw(st.sampled_from(node_ids))
+            return edge
+        
+        edges = draw(st.lists(edge_with_valid_nodes(), min_size=0, max_size=min(max_items, len(node_ids) * 2)))
+    
+    return SupplyChainData(
+        shipments=shipments,
+        inventory=inventory,
+        suppliers=suppliers,
+        nodes=nodes,
+        edges=edges,
+        last_updated=draw(datetime_strategy())
+    )
+
+
+# FilterCriteria strategy
+@st.composite
+def filter_criteria_strategy(draw):
+    """Generate valid FilterCriteria instances."""
+    # Generate date range (optional)
+    has_date_range = draw(st.booleans())
+    date_range = None
+    if has_date_range:
+        start = draw(datetime_strategy())
+        end = draw(st.datetimes(min_value=start, max_value=datetime(2030, 12, 31)))
+        date_range = (start, end)
+    
+    # Generate status filter (optional)
+    has_status = draw(st.booleans())
+    status = None
+    if has_status:
+        status = draw(st.lists(
+            st.sampled_from([s.value for s in ShipmentStatus] + [s.value for s in NodeStatus]),
+            min_size=1,
+            max_size=4
+        ))
+    
+    # Generate location filter (optional)
+    has_location = draw(st.booleans())
+    location = None
+    if has_location:
+        location = draw(st.lists(text_strategy(min_size=1, max_size=50), min_size=1, max_size=5))
+    
+    # Generate category filter (optional)
+    has_category = draw(st.booleans())
+    category = None
+    if has_category:
+        category = draw(st.lists(text_strategy(min_size=1, max_size=30), min_size=1, max_size=5))
+    
+    # Generate search query (optional)
+    has_search = draw(st.booleans())
+    search_query = None
+    search_fields = None
+    if has_search:
+        search_query = draw(text_strategy(min_size=1, max_size=20))
+        search_fields = draw(st.lists(
+            st.sampled_from(['id', 'name', 'origin', 'destination', 'location', 'category']),
+            min_size=1,
+            max_size=3
+        ))
+    
+    return FilterCriteria(
+        date_range=date_range,
+        status=status,
+        location=location,
+        category=category,
+        search_query=search_query,
+        search_fields=search_fields
     )

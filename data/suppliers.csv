@@ -1,0 +1,11 @@
+id,name,contact,performance_score,on_time_delivery_rate,quality_score,average_lead_time,total_shipments,last_updated
+SUP001,Global Manufacturing Co,contact@globalmanuf.com,87.5,92.3,85.0,12.5,156,2024-02-01 10:00:00
+SUP002,EuroTech Supplies,info@eurotech.de,91.2,95.8,88.5,8.2,203,2024-02-01 10:00:00
+SUP003,Asia Pacific Logistics,support@aplogistics.com,78.3,82.1,75.0,15.8,98,2024-02-01 10:00:00
+SUP004,TransGlobal Shipping,sales@transglobal.com,85.6,88.9,83.2,10.3,142,2024-02-01 10:00:00
+SUP005,Southern Hemisphere Traders,contact@shtraders.au,93.8,96.5,92.1,7.5,187,2024-02-01 10:00:00
+SUP006,North American Distributors,info@nadist.com,72.4,76.8,70.5,18.2,67,2024-02-01 10:00:00
+SUP007,Premium Parts International,sales@premiumparts.com,89.7,94.2,87.3,9.1,175,2024-02-01 10:00:00
+SUP008,Rapid Response Logistics,support@rapidresponse.com,95.2,98.1,94.5,5.8,221,2024-02-01 10:00:00
+SUP009,Budget Freight Solutions,contact@budgetfreight.com,68.5,71.2,67.8,22.5,89,2024-02-01 10:00:00
+SUP010,Eco-Friendly Suppliers,info@ecosupply.com,86.9,90.5,84.2,11.7,134,2024-02-01 10:00:00

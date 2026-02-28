@@ -1,0 +1,11 @@
+id,origin,destination,current_location,status,estimated_delivery,actual_delivery,items,supplier_id,created_at,updated_at
+SHP001,Shanghai Port,Los Angeles Port,Pacific Ocean,in_transit,2024-02-15 14:00:00,,INV001;INV002,SUP001,2024-01-20 08:00:00,2024-02-01 10:30:00
+SHP002,Hamburg Warehouse,Berlin Distribution Center,Hamburg Warehouse,pending,2024-02-05 09:00:00,,INV003;INV004;INV005,SUP002,2024-02-01 12:00:00,2024-02-01 12:00:00
+SHP003,Tokyo Supplier,Singapore Hub,Singapore Hub,delivered,2024-01-28 16:00:00,2024-01-28 14:30:00,INV006,SUP003,2024-01-15 07:00:00,2024-01-28 14:30:00
+SHP004,Chicago Warehouse,New York Store,Cleveland,delayed,2024-02-03 10:00:00,,INV007;INV008,SUP001,2024-01-25 11:00:00,2024-02-02 08:15:00
+SHP005,Mumbai Port,Dubai Port,Arabian Sea,in_transit,2024-02-10 18:00:00,,INV009;INV010,SUP004,2024-01-28 09:00:00,2024-02-01 15:45:00
+SHP006,London Warehouse,Paris Distribution Center,Paris Distribution Center,delivered,2024-01-30 12:00:00,2024-01-30 11:20:00,INV011,SUP002,2024-01-22 10:00:00,2024-01-30 11:20:00
+SHP007,Sydney Supplier,Melbourne Warehouse,Sydney Supplier,pending,2024-02-08 08:00:00,,INV012;INV013,SUP005,2024-02-01 14:00:00,2024-02-01 14:00:00
+SHP008,São Paulo Factory,Rio de Janeiro Store,Highway BR-116,in_transit,2024-02-06 15:00:00,,INV014,SUP003,2024-01-29 13:00:00,2024-02-01 09:20:00
+SHP009,Seoul Warehouse,Busan Port,Busan Port,delivered,2024-01-25 17:00:00,2024-01-25 16:45:00,INV015;INV016,SUP001,2024-01-18 08:30:00,2024-01-25 16:45:00
+SHP010,Toronto Supplier,Vancouver Store,Calgary,delayed,2024-02-04 11:00:00,,INV017,SUP004,2024-01-26 10:00:00,2024-02-02 07:30:00

@@ -36,44 +36,44 @@ The plan includes both implementation tasks and property-based testing tasks usi
     - Implement persist_update() method
     - _Requirements: 9.1, 9.2, 9.4_
   
-  - [-] 3.2 Write property test for data loading
+  - [x] 3.2 Write property test for data loading
     - **Property 22: Multi-Source Data Loading**
     - **Validates: Requirements 9.4**
     - Test that data loader returns standard SupplyChainData format
     - _Requirements: 9.4_
   
-  - [~] 3.3 Write property test for status update persistence
+  - [x] 3.3 Write property test for status update persistence
     - **Property 21: Status Update Persistence**
     - **Validates: Requirements 9.2**
     - Test round-trip property for status updates
     - _Requirements: 9.2_
   
-  - [~] 3.4 Create sample data files
+  - [x] 3.4 Create sample data files
     - Create sample CSV files for shipments, inventory, suppliers, nodes, edges
     - Place in data/ directory
     - _Requirements: 9.1_
 
 - [ ] 4. Implement filter engine
-  - [~] 4.1 Create FilterEngine in src/filter_engine.py
+  - [x] 4.1 Create FilterEngine in src/filter_engine.py
     - Implement FilterCriteria dataclass
     - Implement apply_filters() method
     - Implement search() method
     - Implement reset_filters() method
     - _Requirements: 7.1, 7.2, 7.5_
   
-  - [~] 4.2 Write property test for filter application
+  - [x] 4.2 Write property test for filter application
     - **Property 6: Filter Application Preserves Invariants**
     - **Validates: Requirements 3.3, 7.2**
     - Test that filtered data is subset of original and maintains referential integrity
     - _Requirements: 3.3, 7.2_
   
-  - [~] 4.3 Write property test for search functionality
+  - [x] 4.3 Write property test for search functionality
     - **Property 4: Search Returns Only Matching Results**
     - **Validates: Requirements 2.5, 7.1**
     - Test that all results match query and no matching items excluded
     - _Requirements: 2.5, 7.1_
   
-  - [~] 4.4 Write property test for filter persistence
+  - [x] 4.4 Write property test for filter persistence
     - **Property 17: Filter Persistence Round Trip**
     - **Validates: Requirements 7.4**
     - Test that persisted filters can be retrieved correctly
@@ -89,7 +89,7 @@ The plan includes both implementation tasks and property-based testing tasks usi
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 6. Implement alert generator
-  - [~] 6.1 Create AlertGenerator in src/alert_generator.py
+  - [x] 6.1 Create AlertGenerator in src/alert_generator.py
     - Implement generate_alerts() method
     - Implement check_shipment_delays() method
     - Implement check_inventory_levels() method
@@ -116,7 +116,7 @@ The plan includes both implementation tasks and property-based testing tasks usi
     - _Requirements: 3.2_
 
 - [ ] 7. Implement supplier performance tracker
-  - [~] 7.1 Create SupplierPerformanceTracker in src/supplier_tracker.py
+  - [-] 7.1 Create SupplierPerformanceTracker in src/supplier_tracker.py
     - Implement get_supplier_metrics() method
     - Implement calculate_on_time_rate() method
     - Implement rank_suppliers() method
