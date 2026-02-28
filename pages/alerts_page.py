@@ -20,7 +20,15 @@ def render_alerts_page():
         return
     
     alert_generator = AlertGenerator()
-    alerts = alert_generator.generate_alerts(data)
+    
+    # Define default alert rules
+    rules = {
+        'delay_threshold_hours': 24,
+        'low_stock_threshold': 1.0,
+        'supplier_performance_threshold': 70.0
+    }
+    
+    alerts = alert_generator.generate_alerts(data, rules)
     
     # Filter controls
     col1, col2, col3 = st.columns(3)

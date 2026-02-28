@@ -132,7 +132,15 @@ def render_alerts(data):
     st.markdown("### ⚠️ Active Alerts")
     
     alert_generator = AlertGenerator()
-    alerts = alert_generator.generate_alerts(data)
+    
+    # Define default alert rules
+    rules = {
+        'delay_threshold_hours': 24,
+        'low_stock_threshold': 1.0,
+        'supplier_performance_threshold': 70.0
+    }
+    
+    alerts = alert_generator.generate_alerts(data, rules)
     
     # Filter to show only unacknowledged alerts
     active_alerts = [alert for alert in alerts if not alert.acknowledged]
