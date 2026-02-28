@@ -278,8 +278,30 @@ class TestSupplierPerformanceTracker:
             create_test_supplier("SUP003", "Supplier C", on_time_delivery_rate=85.0),
         ]
         
+        base_date = datetime.now()
+        # Create shipments to match the expected on-time rates
+        shipments = [
+            # SUP001: 9 out of 10 on time (90%)
+            *[create_test_shipment(f"SHP{i:03d}", "SUP001", base_date + timedelta(days=5), 
+                                   base_date + timedelta(days=4)) for i in range(1, 10)],
+            create_test_shipment("SHP010", "SUP001", base_date + timedelta(days=5), 
+                               base_date + timedelta(days=6)),
+            
+            # SUP002: 19 out of 20 on time (95%)
+            *[create_test_shipment(f"SHP{i:03d}", "SUP002", base_date + timedelta(days=5), 
+                                   base_date + timedelta(days=4)) for i in range(11, 30)],
+            create_test_shipment("SHP030", "SUP002", base_date + timedelta(days=5), 
+                               base_date + timedelta(days=6)),
+            
+            # SUP003: 17 out of 20 on time (85%)
+            *[create_test_shipment(f"SHP{i:03d}", "SUP003", base_date + timedelta(days=5), 
+                                   base_date + timedelta(days=4)) for i in range(31, 48)],
+            *[create_test_shipment(f"SHP{i:03d}", "SUP003", base_date + timedelta(days=5), 
+                                   base_date + timedelta(days=6)) for i in range(48, 51)],
+        ]
+        
         data = SupplyChainData(
-            shipments=[],
+            shipments=shipments,
             inventory=[],
             suppliers=suppliers,
             nodes=[],
@@ -297,8 +319,10 @@ class TestSupplierPerformanceTracker:
         assert rankings[0].score == 95.0
         assert rankings[1].rank == 2
         assert rankings[1].supplier_id == "SUP001"
+        assert rankings[1].score == 90.0
         assert rankings[2].rank == 3
         assert rankings[2].supplier_id == "SUP003"
+        assert rankings[2].score == 85.0
     
     def test_rank_suppliers_by_lead_time_ascending(self):
         """Test ranking suppliers by lead time (lower is better)."""
